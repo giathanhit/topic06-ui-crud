@@ -1,5 +1,6 @@
 ﻿@page "/orders"
 @using HQSoft.Sales.Orders
+@using HQSoft.Sales.OrderDetails
 @using Volo.Abp.Application.Dtos
 @using Volo.Abp.AspNetCore.Components.Web
 @using System.Net.Http.Json
@@ -9,12 +10,13 @@
 @using HQSoft.Sales.Localization
 @using Microsoft.Extensions.Localization
 @inject IOrderAppService OrderAppService
+@inject IOrdDetailAppService OrderDetailAppService
 @inject HttpClient httpClient
 @inject NavigationManager NavigationManager
 @inject IStringLocalizer<SalesResource> L
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inherits AbpCrudPageBase<IOrderAppService, OrderDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateOrderDto>
- 
+
 <Row>
     <Column style="@($"display:{(_hideItem ? "none" : "block")}; max-width:15%")">
         <HQSoft.Sales.Blazor.Components.FilterBy />
@@ -34,13 +36,13 @@
                     </Column>
                     <Column ColumnSize="ColumnSize.Is2">
                     </Column>
-                    <Column ColumnSize="ColumnSize.Is4" style="@($"padding-left:{(_hideItem ? "21rem" : "17rem")};padding-top: 23px;")">
+                    <Column ColumnSize="ColumnSize.Is4" style="@($"padding-left:{(_hideItem ? "21rem" : "16rem")};padding-top: 23px;")">
                         <Button Outline Clicked="@((a)=>HideFilterBy())" Style="border-style: double;border-color: #e0e0e0;">
                             <Icon Name="IconName.List" />
                         </Button>
                         <Button Outline Style="border-style: double;border-color: #e0e0e0;">
                             <Icon Name="IconName.LocationArrow" />
-                        </Button> 
+                        </Button>
                         <Button Color="Color.Secondary" Clicked="(()=>DeleteSelectedRows())">
                             <Icon Name="IconName.Delete" /> @L["Delete"]
                         </Button>
@@ -179,7 +181,7 @@
                             </DisplayTemplate>
                         </DataGridMultiSelectColumn>
                         <DataGridCommandColumn />
-                         <DataGridColumn Field="@nameof(OrderDto.OrderNumber)" Caption="@L["Order Number"]" Context="order">
+                        <DataGridColumn Field="@nameof(OrderDto.OrderNumber)" Caption="@L["Order Number"]" Context="order">
                             <DisplayTemplate>
                                 <Link Underline="Underline.Always" Clicked="@(() => GoToEditPage(order))">@order.OrderNumber</Link>
                             </DisplayTemplate>

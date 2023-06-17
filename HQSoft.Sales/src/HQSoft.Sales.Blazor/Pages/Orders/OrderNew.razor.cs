@@ -16,9 +16,7 @@ using Volo.Abp.Users;
 namespace HQSoft.Sales.Blazor.Pages.Orders
 {
     public partial class OrderNew
-    { 
-        private IReadOnlyList<OrderDto> orders { get; set; }
-        private IReadOnlyList<OrdDetailDto> orderDetails { get; set; }
+    {  
         private IReadOnlyList<ProductDto> products { get; set; }
 
         protected Validations CreateValationRef;
@@ -37,7 +35,9 @@ namespace HQSoft.Sales.Blazor.Pages.Orders
             {
                 await CreateValationRef.ClearAll();
             }
+
             NewEntity.OrderNumber = await OrderAppService.GenerateOrderIdAsync();
+            NewDetailEntity.OrderID = await OrderAppService.GenerateOrderIdAsync();
 
             await CalculatePrice();
             await GetProductAsync();
@@ -62,8 +62,7 @@ namespace HQSoft.Sales.Blazor.Pages.Orders
             products = result.Items;
             TotalCount = (int)result.TotalCount;
         }
-
-
+         
         // Trong component
         protected virtual async Task CalculatePrice()
         {
@@ -88,8 +87,7 @@ namespace HQSoft.Sales.Blazor.Pages.Orders
                     validate = await CreateValationRef.ValidateAll();
                 }
                 if (validate)  
-                {
-                    //OrderAppService.CreateOrderAndOrderDetails(NewEntity,NewDetailEntity);
+                { 
                     OrderAppService.CreateAsync(NewEntity);
                     OrdDetailAppService.CreateAsync(NewDetailEntity);
                     Message.Success("Thêm mới thành công!!!");

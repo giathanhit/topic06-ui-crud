@@ -13,6 +13,7 @@ namespace HQSoft.Sales.Products
         public string? SiteCode { get; set; }
         public int Quanity { get; set; }
         public string? QRCode { get; set; }
-        public double SalesPrice { get; set; } 
+        public double SalesPrice { get; set; }
+        public bool IsSelected { get; set; }
     }
 }

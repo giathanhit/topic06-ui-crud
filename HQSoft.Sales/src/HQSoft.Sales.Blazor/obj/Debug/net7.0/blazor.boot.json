@@ -335,19 +335,19 @@
       "mscorlib.dll": "sha256-qqpKd+W+AFb6UxudEYEKzrz7ma81p5LrWUwPBVvHV4U=",
       "netstandard.dll": "sha256-OYYuPT3JUknj4LdYIa58zF7kDB3tCnLzjCSuhEjtKXM=",
       "System.Private.CoreLib.dll": "sha256-EVS7zPxPV\/41g2mzPwdXtwiigWxI\/SeAHme1IgyD6tc=",
-      "HQSoft.Sales.Application.Contracts.dll": "sha256-Gf\/aHry2MQBwKNw4AGQismgWNdiqtqONhZ7hRINRP2s=",
-      "HQSoft.Sales.Domain.Shared.dll": "sha256-hqYXHbZmMwdf39dV6JRQLHFcLeFPo5Wr6xViepYJ2dY=",
-      "HQSoft.Sales.HttpApi.Client.dll": "sha256-PaCaLrPoRLZw7rCchtxbPBEz\/1Go9W9yLSElMbN8U4Y=",
-      "HQSoft.Sales.Blazor.dll": "sha256-wIwnsCwNYuhk1cqxCTIVDqrWgmqsq8cKxjNGxibr6GI="
+      "HQSoft.Sales.Application.Contracts.dll": "sha256-kdC+cYSKMMxvMDTgaGsRxwspeUiKnH8K901B02afgIU=",
+      "HQSoft.Sales.Domain.Shared.dll": "sha256-gYGqNSFWiAUeWnYmVLW\/bE+hZmULl+VbVLjywHz+PdE=",
+      "HQSoft.Sales.HttpApi.Client.dll": "sha256-L4dtCigu1UWcuanvv0ZxyrY97ikkIQCzoSq6X8p6bXU=",
+      "HQSoft.Sales.Blazor.dll": "sha256-+8g25\/QYko1+QCzGBiNmpvGDSCYlh2ZFiQSaRhCld\/w="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "HQSoft.Sales.HttpApi.Client.pdb": "sha256-dFbDUfaHZ3DkLeIHXOKTQ23LzTf4sMkEA69aFyGsAUM=",
-      "HQSoft.Sales.Application.Contracts.pdb": "sha256-7SLa7QfyZkkIi+5ZRaVyKC5KloOb8kvliqaDi6XVniY=",
+      "HQSoft.Sales.HttpApi.Client.pdb": "sha256-p7B6PR1B7yvXCfeWQpXtj7l6hxb\/ppJTp\/oKxitDYLs=",
+      "HQSoft.Sales.Application.Contracts.pdb": "sha256-ubxXdjvJT0czdloi7DJYfpVY4LhMkjeRqo66Gvk76yg=",
       "HQSoft.Sales.Domain.Shared.pdb": "sha256-l1DSK0QwtwwdPpYVFSmUqpISCWM9W8IHJhbIVQr8P80=",
-      "HQSoft.Sales.Blazor.pdb": "sha256-eD3UAM95Nk2d8CMu48Y2wc5B\/GzQNwlZETk14Fx94VI="
+      "HQSoft.Sales.Blazor.pdb": "sha256-8TryEfL1mZuKQ+2n6YMLilf3S\/QPOIPJfpsVQfI7h\/c="
     },
     "runtime": {
       "dotnet.7.0.5.eqs19pya6r.js": "sha256-codB25EodaFEP43MDCfMBuKXU4LqurUKnQrpoMIFnPs=",

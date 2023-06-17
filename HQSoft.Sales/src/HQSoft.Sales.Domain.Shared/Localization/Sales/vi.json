@@ -44,7 +44,6 @@
     "Customer Address": "Địa chỉ khách hàng",
     "Order Status": "Trạng thái đơn hàng",
     "Total Amount": "Tổng cộng",
-    "Total": "Tổng",
     "Input name, Code, Customer Chanel or Shop Type": "Nhập tên, Mã, Kênh khách hàng hoặc Loại cửa hàng",
     "Save Filter": "Lưu bộ lọc",
     "Created By": "Tạo bởi",
@@ -55,6 +54,18 @@
     "Shared With": "Đã chia sẻ với",
     "Edit History": "Lịch sử sửa đổi",
     "Unit": "Đơn vị",
+    "Order ID": "Mã hóa đơn",
+    "Product ID": "Mã sản phẩm",
+    "Product Name": "Tên sản phẩm",
+    "Quanity": "Số lượng",
+    "Price": "Đơn giá",
+    "Total": "Thành tiền",
+    "Distributor Code": "Mã nhà phân phối",
+    "Status": "Trạng thái",
+    "Invoice Note": "Ghi chú hóa đơn",
+    "Sales Person": "Nhân viên bán hàng",
+    "Delivery Staff": "Nhân viên bán hàng",
+    "Remark": "Nhận xét",
     "Assigned To": ""
 
 

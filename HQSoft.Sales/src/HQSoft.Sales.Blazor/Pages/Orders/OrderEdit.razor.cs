@@ -7,8 +7,7 @@ using Blazorise;
 using Microsoft.AspNetCore.Components;
 using HQSoft.Sales.Orders;
 using System.Linq;
-using HQSoft.Sales.OrderDetails;
-using HQSoft.Sales.Blazor.Pages.Products;
+using HQSoft.Sales.OrderDetails; 
 
 namespace HQSoft.Sales.Blazor.Pages.Orders
 {
@@ -22,11 +21,7 @@ namespace HQSoft.Sales.Blazor.Pages.Orders
         public string Id { get; set; }
         public Guid EditingEntityId { get; set; }
 
-        private IReadOnlyList<ProductDto> ProductList { get; set; } 
-
-        private int PageSize { get; } = LimitedResultRequestDto.DefaultMaxResultCount;
-        private int CurrentPage { get; set; }
-        private string CurrentSorting { get; set; }
+        private IReadOnlyList<ProductDto> ProductList { get; set; }  
 
         protected override async Task OnInitializedAsync()
         {  
@@ -42,7 +37,7 @@ namespace HQSoft.Sales.Blazor.Pages.Orders
             {
                 await EditValidationsRef.ClearAll();
             }
-            var orderId = EditingEntity.OrderNumber; 
+            var orderId = EditingEntity.OrderNumber;
 
             ProductList = await OrderAppService.GetProductsByOrderDetail(orderId);
         }
@@ -71,8 +66,15 @@ namespace HQSoft.Sales.Blazor.Pages.Orders
 
         protected virtual async Task DeleteEntityAsync(Guid Id)
         {
-            await OrderAppService.DeleteAsync(Id);
-            NavigationManager.NavigateTo("orders");
+            if(EditingEntity.OrderStatus == OrderStatus.Complete)
+            {
+                await Message.Warn("Đơn hàng này đã hoàn thành nên không thể xóa!!!");
+            }
+            else
+            {
+                await OrderAppService.DeleteAsync(Id);
+                NavigationManager.NavigateTo("orders");
+            }
         }
 
         private void GoToOrderPage()

@@ -50,8 +50,7 @@ namespace HQSoft.Sales.Blazor.Pages.Orders
         }
 
         private string _searchString;
-        private DataGrid<OrderDto> dataGrid;
-        private List<string> _events = new();
+        private DataGrid<OrderDto> dataGrid; 
 
         private Task _quickFilter(string e)
         {
@@ -60,9 +59,7 @@ namespace HQSoft.Sales.Blazor.Pages.Orders
         }
  
         private bool OnCustomFilter(OrderDto x)
-        {
-            // We want to accept empty value as valid or otherwise
-            // datagrid will not show anything.
+        { 
             if (string.IsNullOrEmpty(_searchString))
                 return true; 
 
@@ -92,7 +89,15 @@ namespace HQSoft.Sales.Blazor.Pages.Orders
         {
             foreach (var item in selectedRows)
             {
-                await AppService.DeleteAsync(item.Id);
+                if(item.OrderStatus == OrderStatus.Complete)
+                {
+                    await Message.Warn("Đơn hàng này đã hoàn thành nên không thể xóa!!!");
+                }
+                else
+                {
+                    await OrderDetailAppService.DeleteAsync(item.Id);
+                    await OrderAppService.DeleteAsync(item.Id);
+                }
             }
             // Refresh lại danh sách sau khi xóa
             await GetOrderAsync();

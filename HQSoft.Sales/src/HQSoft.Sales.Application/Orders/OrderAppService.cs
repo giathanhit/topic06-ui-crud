@@ -11,8 +11,7 @@ using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.ObjectMapping;
-using Volo.Abp.Uow;
-using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Uow; 
 
 namespace HQSoft.Sales.Orders;
 

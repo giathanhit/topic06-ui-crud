@@ -298,18 +298,7 @@
                                                 <DataGridCommandColumn />
                                                 @if (ProductList != null)
                                                 {
-                                                    <DataGridColumn Field="@nameof(ProductDto.ProductID)" Caption="Product ID">
-                                                        @*           <DisplayTemplate>
-                                                    <Select TValue="ProductDto"
-                                                    SelectedValue="@context"
-                                                    SelectedValuesChanged="@(()=>FillProduct(context.ProductID,context))">
-                                                    @foreach (var order in ProductList)
-                                                    {
-                                                    <SelectItem Value="@order">@order.ProductID.ToString()</SelectItem>
-                                                    }S
-                                                    </Select>
-                                                    </DisplayTemplate>*@
-                                                    </DataGridColumn>
+                                                    <DataGridColumn Field="@nameof(ProductDto.ProductID)" Caption="Product ID"/>
                                                     <DataGridColumn Field="@nameof(ProductDto.ProductName)" Caption="Product Name" />
                                                     <DataGridColumn Field="@nameof(ProductDto.Quanity)" Caption="Quanity" />
                                                     <DataGridColumn Field="@nameof(ProductDto.Unit)" Caption="Unit" Context="order" />
