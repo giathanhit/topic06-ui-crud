@@ -1,0 +1,382 @@
+﻿@page "/order/new"
+
+@using Blazorise.Components
+@using System.Net.Http.Json
+@using Volo.Abp.MultiTenancy
+@using HQSoft.Sales.Orders
+@using HQSoft.Sales.Products;
+@using HQSoft.Sales.OrderDetails
+@using Volo.Abp.Application.Dtos
+@using HQSoft.Sales.Localization;
+@using Microsoft.Extensions.Localization;
+@using Volo.Abp.AspNetCore.Components.Web;
+
+
+@inject HttpClient httpClient
+@inject IOrderAppService OrderAppService
+@inject IProductAppService ProductAppService
+@inject IOrdDetailAppService OrdDetailAppService
+@inject NavigationManager NavigationManager
+@inject IStringLocalizer<SalesResource> L
+@inject AbpBlazorMessageLocalizerHelper<SalesResource> LH
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inherits AbpCrudPageBase<IOrderAppService, OrderDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateOrderDto>
+
+
+
+<Row Spacing="2" xs="1">
+    <Span />
+    <Column>
+    </Column>
+    <Column>
+    </Column>
+    <Column>
+    </Column>
+    <Column Style="padding:10px 10px 10px 120px">
+        <Button Style="border-style: double;border-color: #c7c7c7;">
+            <Icon Name="IconName.List" Clicked="@((a)=>HideFilterBy())" />
+        </Button>
+        <HQSoft.Sales.Blazor.Components.Button.ButtonToolbar />
+        <Button Style="color: #fff; background-color: #a46363;" Clicked="(()=>GoToOrderPage())">
+            <Icon Name="IconName.Undo" /> @L["Back"]
+        </Button>
+        <Button Color="Color.Primary" Clicked="CreateEntityAsync">
+            <Icon Name="IconName.Save" IconStyle="IconStyle.Regular" /> @L["Save"]
+        </Button>
+    </Column>
+</Row>
+
+<Row>
+    <Column style="@($"display:{(_hideItem ? "none" : "block")}; max-width:15%")">
+
+        <HQSoft.Sales.Blazor.Components.AssignedTo />
+    </Column>
+    <Column style="@($"width:{(_hideItem ? "100%" : "75%")};")">
+        <Card>
+            <CardBody>
+                @*Filter*@
+                <Validations @ref="@CreateValationRef" Model="@NewEntity" ValidateOnLoad="false">
+                    <Row Style="padding-bottom:15px">
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>@L["Order Type"]</Text>
+                            <Select TValue="OrderType" @bind-SelectedValue="@NewEntity.OrderType" Class="form-control">
+                                @foreach (var order in Enum.GetValues(typeof(OrderType)))
+                                {
+                                    <SelectItem Value="@((OrderType)order)">
+                                        @L[$"Enum:OrderType.{order}"]
+                                    </SelectItem>
+                                }
+                            </Select>
+                        </Column>
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>@L["Distributor Code"]</Text>
+                            <Field>
+                                <TextEdit Placeholder="DNDNXX" @bind-Text="@NewEntity.DistributorCode" />
+                            </Field>
+                        </Column>
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>@L["Order Number"]</Text>
+                            <Field>
+                                <TextEdit Placeholder="SO00000XXX" @bind-Text="@NewEntity.OrderNumber" Disabled />
+                            </Field>
+                        </Column>
+                    </Row>
+
+                    <Row Style="padding-bottom:15px">
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>@L["Status"]</Text>
+                            <Select TValue="OrderStatus" @bind-SelectedValue="@NewEntity.OrderStatus">
+                                @foreach (var order in Enum.GetValues(typeof(OrderStatus)))
+                                {
+                                    <SelectItem Value="@((OrderStatus)order)">
+                                        @L[$"Enum:OrderStatus.{order}"]
+                                    </SelectItem>
+                                }
+                            </Select>
+                        </Column>
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>@L["Handle"]</Text>
+                            <Select TValue="OrderHandle" @bind-SelectedValue="@NewEntity.Handle">
+                                @foreach (var order in Enum.GetValues(typeof(OrderHandle)))
+                                {
+                                    <SelectItem Value="@((OrderHandle)order)">@order.ToString()</SelectItem>
+                                }
+                            </Select>
+                        </Column>
+                    </Row>
+
+                    <Row Style="padding-bottom:15px">
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>@L["Customer Address"]</Text>
+                            <Field>
+                                <TextEdit Placeholder="" @bind-Text="@NewEntity.CustomerAddress" />
+                            </Field>
+                        </Column>
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>@L["Remark"]</Text>
+                            <Field>
+                                <TextEdit Placeholder="" @bind-Text="@NewEntity.Remark" />
+                            </Field>
+                        </Column>
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>@L["Invoice Number"]</Text>
+                            <Field>
+                                <TextEdit Placeholder="" @bind-Text="@NewEntity.InvoiceNumber" />
+                            </Field>
+                        </Column>
+                    </Row>
+
+                    <Row Style="padding-bottom:15px">
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>@L["Invoice Note"]</Text>
+                            <Field>
+                                <TextEdit Placeholder="" @bind-Text="@NewEntity.InvoiceNote" />
+                            </Field>
+                        </Column>
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>@L["Customer ID"]</Text>
+                            <Field>
+                                <TextEdit Placeholder="DNG0000XX" @bind-Text="@NewEntity.CustomerID" />
+                            </Field>
+                        </Column>
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>@L["Customer Name"]</Text>
+                            <Field>
+                                <TextEdit Placeholder="" @bind-Text="@NewEntity.CustomerName" />
+                            </Field>
+                        </Column>
+                    </Row>
+                    <Row>
+                        <Column>
+                            <Tabs SelectedTab="order">
+                                <Items>
+                                    <Tab Name="order">Order/InvoiceInformation</Tab>
+                                    <Tab Name="shipping">Shipping Info</Tab>
+                                    <Tab Name="address">Address</Tab>
+                                    <Tab Name="taxt">Taxt Information</Tab>
+                                    <Tab Name="discount">Discount Information</Tab>
+                                </Items>
+                                <Content>
+                                    <TabPanel Name="order">
+                                        @*Filter*@
+                                        @*Row 1*@
+                                        <Row Style="padding-bottom:15px">
+                                            <Column ColumnSize="ColumnSize.Is4">
+                                                <Text>@L["Order Date"]</Text>
+                                                <Field>
+                                                    <DateEdit TValue="DateTime" @bind-Date="NewEntity.OrderDate" />
+                                                </Field>
+                                            </Column>
+                                            <Column ColumnSize="ColumnSize.Is4">
+                                                <Text>@L["Sales Person"]</Text>
+                                                <Field>
+                                                    <TextEdit Placeholder="" />
+                                                </Field>
+                                            </Column>
+                                            <Column ColumnSize="ColumnSize.Is4">
+                                                <Text>@L["Delivery Staff"]</Text>
+                                                <Field>
+                                                    <TextEdit @bind-Text="@NewEntity.DeliveryStaff">
+                                                        <Feedback>
+                                                            <ValidationError />
+                                                        </Feedback>
+                                                    </TextEdit>
+                                                </Field>
+                                            </Column>
+                                        </Row>
+
+                                        @*Row 2*@
+                                        <Row Style="padding-bottom:15px">
+                                            <Column ColumnSize="ColumnSize.Is4">
+                                                <Text>@L["Delivery Unit"]</Text>
+                                                <Field>
+                                                    <TextEdit Placeholder="Marketing Long Xuyen" @bind-Text="@NewEntity.DistributorName" />
+                                                </Field>
+                                            </Column>
+                                            <Column ColumnSize="ColumnSize.Is4">
+                                                <Text>@L["Payment Method"]</Text>
+                                                <Select TValue="PaymentMethod" @bind-SelectedValue="@NewEntity.PaymentMethod">
+                                                    @foreach (var order in Enum.GetValues(typeof(PaymentMethod)))
+                                                    {
+                                                        <SelectItem Value="@((PaymentMethod)order)">
+                                                            @L[$"Enum:PaymentThod.{order}"]
+                                                        </SelectItem>
+                                                    }
+                                                </Select>
+                                            </Column>
+                                        </Row>
+
+                                        @*Row 3*@
+                                        <Row Style="padding-bottom:15px">
+                                            <Column ColumnSize="ColumnSize.Is3">
+                                                <Text>Disc Adjustment (%/Money)</Text>
+                                                <Field>
+                                                    <NumericPicker @bind-Value="@NewEntity.Discount" />
+                                                </Field>
+                                            </Column>
+                                            <Column ColumnSize="ColumnSize.Is1" Style="width:11.666667%">
+                                                <Text Style="color: #ffff">Disc</Text>
+                                                <Field>
+                                                    <NumericPicker @bind-Value="@NewEntity.Discount" />
+                                                </Field>
+                                            </Column>
+
+                                            <Column ColumnSize="ColumnSize.Is3">
+                                                <Text>Volumn/Line Discount</Text>
+                                                <Field>
+                                                    <NumericPicker @bind-Value="@NewEntity.Discount" />
+                                                </Field>
+                                            </Column>
+                                            <Column ColumnSize="ColumnSize.Is1" Style="width:11.666667%">
+                                                <Text Style="color: #ffff">Volumn</Text>
+                                                <Field>
+                                                    <NumericPicker @bind-Value="@NewEntity.Discount" />
+                                                </Field>
+                                            </Column>
+
+                                            <Column ColumnSize="ColumnSize.Is4">
+                                                <Text>Reward Amount</Text>
+                                                <NumericPicker Placeholder="" @bind-Value="@NewEntity.RewardAmount" />
+                                            </Column>
+                                        </Row>
+
+                                        @*Row 4*@
+                                        <Row Style="padding-bottom:15px">
+                                            <Column ColumnSize="ColumnSize.Is4">
+                                                <Check TValue="bool">Do Not Caculator Discount</Check>
+                                            </Column>
+                                        </Row>
+
+                                        @*Row 5*@
+                                        <Row Style="padding-bottom:15px">
+                                            <Column ColumnSize="ColumnSize.Is4">
+                                                <Text>Total Item Amount</Text>
+                                                <Field>
+                                                    <NumericPicker @bind-Value="@NewEntity.TotalItem" />
+                                                </Field>
+                                            </Column>
+
+                                            <Column ColumnSize="ColumnSize.Is4">
+                                                <Text>Total Tax Amount</Text>
+                                                <Field>
+                                                    <NumericPicker @bind-Value="@NewEntity.Tax" />
+                                                </Field>
+                                            </Column>
+
+                                            <Column ColumnSize="ColumnSize.Is4">
+                                                <Text>Quanity Amount</Text>
+                                                <Field>
+                                                    <NumericPicker Placeholder="" @bind-Value="@NewEntity.Quanity" />
+                                                </Field>
+                                            </Column>
+                                        </Row>
+
+                                        @*Row 6*@
+                                        <Row Style="padding-bottom:15px">
+                                            <Column ColumnSize="ColumnSize.Is4">
+                                                <Text>Total</Text>
+                                                <Field>
+                                                    <NumericPicker TValue="float" @bind-Value="@NewEntity.Total" />
+                                                </Field>
+                                            </Column>
+
+                                            <Column ColumnSize="ColumnSize.Is4">
+                                                <Text>Total Amount</Text>
+                                                <Field>
+                                                    <NumericPicker TValue="float" @bind-Value="@NewEntity.TotalAmount" />
+                                                </Field>
+                                            </Column>
+                                        </Row>
+
+                                        @*Content*@
+
+                                        <Validations @ref="@CreateValationRef" Model="@NewDetailEntity" ValidateOnLoad="false">
+                                            <DataGrid TItem="OrdDetailDto"
+                                                        Editable
+                                                        ShowPager
+                                                      EditMode="DataGridEditMode.Inline"
+                                                      CommandMode="DataGridCommandMode.ButtonRow">
+                                                <DataGridColumns>
+                                                    <DataGridColumn Caption="#">
+                                                    </DataGridColumn>
+                                                    <DataGridColumn Field="@nameof(NewDetailEntity.OrderID)" Caption="@L["Order ID"]">
+                                                        <DisplayTemplate>
+                                                            <TextEdit @bind-Text="@NewDetailEntity.OrderID" Disabled />
+                                                        </DisplayTemplate>
+                                                    </DataGridColumn>
+                                                    <DataGridColumn Field="@nameof(NewDetailEntity.ProductID)" Caption="@L["Product ID"]">
+                                                        <DisplayTemplate> 
+                                                            <TextEdit @bind-Text="@NewDetailEntity.ProductID" Disabled />
+                                                        </DisplayTemplate>
+                                                    </DataGridColumn>
+                                                    <DataGridColumn Field="@nameof(NewDetailEntity.ProductName)" Caption="@L["Product Name"]" Editable>
+                                                        <EditTemplate>
+                                                            <Autocomplete TItem="ProductDto"
+                                                                          TValue="string"
+                                                                          Data="@products"
+                                                                          TextField="@((item) => item?.ProductName)"
+                                                                          ValueField="@((item) => item?.ProductID)"
+                                                                          Placeholder="Search..."
+                                                                          Filter="AutocompleteFilter.StartsWith"
+                                                                                        FreeTyping
+                                                                          CustomFilter="@((item, searchValue) => item.ProductName.IndexOf(searchValue, 0, StringComparison.CurrentCultureIgnoreCase) >= 0
+                                                                                                            || item.ProductID.IndexOf(searchValue, 0, StringComparison.CurrentCultureIgnoreCase) >= 0 )"
+                                                                          SelectedValueChanged="@((item) => {
+                                                                                        var product = products.FirstOrDefault(p => p.ProductID == item);
+                                                                                        if (product != null) {
+                                                                                                                NewDetailEntity.Quantity = NewDetailEntity.Quantity;
+                                                                                                                NewDetailEntity.ProductID = product.ProductID;
+                                                                                                                NewDetailEntity.Price = product.SalesPrice;
+                                                                                                                NewDetailEntity.SKU = product.Unit;
+                                                                                                            }})">
+                                                            </Autocomplete>
+                                                        </EditTemplate>
+                                                        </DataGridColumn>
+                                                        <DataGridColumn Field="@nameof(NewDetailEntity.SKU)" Caption="@L["Unit"]">
+                                                        <DisplayTemplate>
+                                                            <TextEdit @bind-Text="@NewDetailEntity.SKU" Disabled />
+                                                        </DisplayTemplate>
+                                                    </DataGridColumn>
+                                                    <DataGridColumn Field="@nameof(NewDetailEntity.Quantity)" Caption="@L["Quanity"]" Editable>
+                                                        <EditTemplate>
+                                                            <NumericPicker Min="1" TValue="int" Value="NewDetailEntity.Quantity" ValueChanged="@UpdateTotal" />
+                                                        </EditTemplate>
+                                                    </DataGridColumn>
+                                                    <DataGridColumn Field="@nameof(NewDetailEntity.Price)" Caption="@L["Price"]" Editable>
+                                                        <EditTemplate>
+                                                            <NumericPicker Min="0" TValue="double" @bind-Value="@NewDetailEntity.Price" />
+                                                        </EditTemplate>
+                                                    </DataGridColumn>
+                                                    <DataGridColumn Field="@nameof(NewDetailEntity.Total)" Caption="@L["Total"]" Editable>
+                                                        <EditTemplate>
+                                                            <NumericPicker Min="0" TValue="double" @bind-Value="@NewDetailEntity.Total" Disabled />
+                                                        </EditTemplate>
+                                                    </DataGridColumn>
+                                                </DataGridColumns>
+                                                <ButtonRowTemplate>
+                                                    <Button Color="Color.Success" Clicked="context.NewCommand.Clicked">New</Button>
+                                                </ButtonRowTemplate>
+                                            </DataGrid>
+                                        </Validations>
+                                    </TabPanel>
+                                    <TabPanel Name="shipping">
+                                        Content for profile.
+                                    </TabPanel>
+                                    <TabPanel Name="address">
+                                        Content for messages.
+                                    </TabPanel>
+                                    <TabPanel Name="taxt">
+                                        Content for messages.
+                                    </TabPanel>
+                                    <TabPanel Name="discount">
+                                        Content for settings.
+                                    </TabPanel>
+                                </Content>
+                            </Tabs>
+                        </Column>
+                    </Row>
+                </Validations>
+            </CardBody>
+        </Card>
+    </Column>
+</Row>

@@ -1,0 +1,61 @@
+﻿@using HQSoft.Sales.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SalesResource> L
+
+<Card>
+    <CardBody>
+        <Row Padding="Padding.Is3">
+            <Column style="width: 100%">
+                <Icon Name="IconName.UserPlus"></Icon>
+                <Text>@L["Assigned To"]</Text>
+            </Column>
+            <Row Padding="Padding.Is3">
+                <Column>
+                    <Icon Name="IconName.Add"></Icon>
+                </Column>
+            </Row>
+            <Row Padding="Padding.Is3">
+                <Column>
+                    <Icon Name="IconName.UserPlus"></Icon>
+                    <Text>@L["Assigned To"]</Text>
+                </Column>
+            </Row>
+            <Row Padding="Padding.Is3">
+                <Column>
+                    <Button Color="Color.Danger" Outline Clicked="@(()=>fileEditRef.ShowPicker())">
+                        @L["Attach File"]
+                        <Icon Name="IconName.Paperclip"></Icon>
+                    </Button>
+                    </Column>
+                    </Row>
+
+                    <Row Padding="Padding.Is3">
+                    <Column>
+                    <Icon Name="IconName.Star" IconStyle="IconStyle.Regular"></Icon>
+                    <Text>@L["Review"]</Text>
+                    </Column>
+                    </Row>
+
+                    <Row Padding="Padding.Is3">
+                    <Column>
+                    <Icon Name="IconName.Share"></Icon>
+                    <Text>@L["Shared With"]</Text>
+                    </Column>
+                    </Row>
+                    <Row Padding="Padding.Is3">
+                    <Column>
+                    <Icon Name="IconName.Add"></Icon>
+                    </Column>
+                    </Row>
+                    <Row Padding="Padding.Is3">
+                    <Column>
+                    <Heading Size="HeadingSize.Is4" TextWeight="TextWeight.Bold">@L["Edit History"]</Heading>
+                    </Column>
+                    </Row>
+                    </Row>
+                    </CardBody>
+                    </Card>
+
+                    @code {
+    FileEdit fileEditRef;
+}

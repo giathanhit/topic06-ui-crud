@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\ASUS\.nuget\packages\</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.5.0</NuGetToolVersion>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="C:\Users\ASUS\.nuget\packages\" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Content Include="$(NuGetPackageRoot)volo.abp.tenantmanagement.blazor.webassembly\7.2.2\contentFiles\any\net7.0\Volo.Abp.TenantManagement.Blazor.WebAssembly.abppkg.json" Condition="Exists('$(NuGetPackageRoot)volo.abp.tenantmanagement.blazor.webassembly\7.2.2\contentFiles\any\net7.0\Volo.Abp.TenantManagement.Blazor.WebAssembly.abppkg.json')">
+      <NuGetPackageId>Volo.Abp.TenantManagement.Blazor.WebAssembly</NuGetPackageId>
+      <NuGetPackageVersion>7.2.2</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>Volo.Abp.TenantManagement.Blazor.WebAssembly.abppkg.json</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Content Include="$(NuGetPackageRoot)volo.abp.settingmanagement.blazor.webassembly\7.2.2\contentFiles\any\net7.0\Volo.Abp.SettingManagement.Blazor.WebAssembly.abppkg.json" Condition="Exists('$(NuGetPackageRoot)volo.abp.settingmanagement.blazor.webassembly\7.2.2\contentFiles\any\net7.0\Volo.Abp.SettingManagement.Blazor.WebAssembly.abppkg.json')">
+      <NuGetPackageId>Volo.Abp.SettingManagement.Blazor.WebAssembly</NuGetPackageId>
+      <NuGetPackageVersion>7.2.2</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>Volo.Abp.SettingManagement.Blazor.WebAssembly.abppkg.json</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Content Include="$(NuGetPackageRoot)volo.abp.identity.blazor.webassembly\7.2.2\contentFiles\any\net7.0\Volo.Abp.Identity.Blazor.WebAssembly.abppkg.json" Condition="Exists('$(NuGetPackageRoot)volo.abp.identity.blazor.webassembly\7.2.2\contentFiles\any\net7.0\Volo.Abp.Identity.Blazor.WebAssembly.abppkg.json')">
+      <NuGetPackageId>Volo.Abp.Identity.Blazor.WebAssembly</NuGetPackageId>
+      <NuGetPackageVersion>7.2.2</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>Volo.Abp.Identity.Blazor.WebAssembly.abppkg.json</Link>
+    </Content>
+  </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets\7.0.0\buildTransitive\net6.0\Microsoft.Extensions.Configuration.UserSecrets.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets\7.0.0\buildTransitive\net6.0\Microsoft.Extensions.Configuration.UserSecrets.props')" />
+    <Import Project="$(NuGetPackageRoot)volo.abp.aspnetcore.components.web\7.2.2\buildTransitive\Volo.Abp.AspNetCore.Components.Web.props" Condition="Exists('$(NuGetPackageRoot)volo.abp.aspnetcore.components.web\7.2.2\buildTransitive\Volo.Abp.AspNetCore.Components.Web.props')" />
+    <Import Project="$(NuGetPackageRoot)blazorise\1.2.0\buildTransitive\Blazorise.props" Condition="Exists('$(NuGetPackageRoot)blazorise\1.2.0\buildTransitive\Blazorise.props')" />
+    <Import Project="$(NuGetPackageRoot)blazorise.snackbar\1.2.0\buildTransitive\Blazorise.Snackbar.props" Condition="Exists('$(NuGetPackageRoot)blazorise.snackbar\1.2.0\buildTransitive\Blazorise.Snackbar.props')" />
+    <Import Project="$(NuGetPackageRoot)blazorise.datagrid\1.2.0\buildTransitive\Blazorise.DataGrid.props" Condition="Exists('$(NuGetPackageRoot)blazorise.datagrid\1.2.0\buildTransitive\Blazorise.DataGrid.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly\7.0.0\build\net7.0\Microsoft.AspNetCore.Components.WebAssembly.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly\7.0.0\build\net7.0\Microsoft.AspNetCore.Components.WebAssembly.props')" />
+    <Import Project="$(NuGetPackageRoot)volo.abp.aspnetcore.components.webassembly.theming\7.2.2\buildTransitive\Volo.Abp.AspNetCore.Components.WebAssembly.Theming.props" Condition="Exists('$(NuGetPackageRoot)volo.abp.aspnetcore.components.webassembly.theming\7.2.2\buildTransitive\Volo.Abp.AspNetCore.Components.WebAssembly.Theming.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly.authentication\7.0.0\buildTransitive\Microsoft.AspNetCore.Components.WebAssembly.Authentication.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly.authentication\7.0.0\buildTransitive\Microsoft.AspNetCore.Components.WebAssembly.Authentication.props')" />
+    <Import Project="$(NuGetPackageRoot)volo.abp.aspnetcore.components.web.leptonxlitetheme\2.2.1\buildTransitive\Volo.Abp.AspNetCore.Components.Web.LeptonXLiteTheme.props" Condition="Exists('$(NuGetPackageRoot)volo.abp.aspnetcore.components.web.leptonxlitetheme\2.2.1\buildTransitive\Volo.Abp.AspNetCore.Components.Web.LeptonXLiteTheme.props')" />
+    <Import Project="$(NuGetPackageRoot)volo.abp.aspnetcore.components.webassembly.leptonxlitetheme\2.2.1\buildTransitive\Volo.Abp.AspNetCore.Components.WebAssembly.LeptonXLiteTheme.props" Condition="Exists('$(NuGetPackageRoot)volo.abp.aspnetcore.components.webassembly.leptonxlitetheme\2.2.1\buildTransitive\Volo.Abp.AspNetCore.Components.WebAssembly.LeptonXLiteTheme.props')" />
+    <Import Project="$(NuGetPackageRoot)blazorise.bootstrap5\1.2.0\buildTransitive\Blazorise.Bootstrap5.props" Condition="Exists('$(NuGetPackageRoot)blazorise.bootstrap5\1.2.0\buildTransitive\Blazorise.Bootstrap5.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer Condition=" '$(PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer)' == '' ">C:\Users\ASUS\.nuget\packages\microsoft.aspnetcore.components.webassembly.devserver\7.0.0</PkgMicrosoft_AspNetCore_Components_WebAssembly_DevServer>
+  </PropertyGroup>
+</Project>

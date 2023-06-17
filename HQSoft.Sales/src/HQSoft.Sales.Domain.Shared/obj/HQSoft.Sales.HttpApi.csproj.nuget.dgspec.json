@@ -1,0 +1,90 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\HQSOFT\\LeptonX\\HQSoft.Sales\\src\\HQSoft.Sales.HttpApi\\HQSoft.Sales.HttpApi.csproj": {}
+  },
+  "projects": {
+    "D:\\HQSOFT\\LeptonX\\HQSoft.Sales\\src\\HQSoft.Sales.HttpApi\\HQSoft.Sales.HttpApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\HQSOFT\\LeptonX\\HQSoft.Sales\\src\\HQSoft.Sales.HttpApi\\HQSoft.Sales.HttpApi.csproj",
+        "projectName": "HQSoft.Sales.Domain.Shared",
+        "projectPath": "D:\\HQSOFT\\LeptonX\\HQSoft.Sales\\src\\HQSoft.Sales.HttpApi\\HQSoft.Sales.HttpApi.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\HQSOFT\\LeptonX\\HQSoft.Sales\\src\\HQSoft.Sales.Domain.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "D:\\HQSOFT\\LeptonX\\HQSoft.Sales\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "Volo.Abp.Account.HttpApi": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.FeatureManagement.HttpApi": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.Identity.HttpApi": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.PermissionManagement.HttpApi": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.SettingManagement.HttpApi": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.TenantManagement.HttpApi": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

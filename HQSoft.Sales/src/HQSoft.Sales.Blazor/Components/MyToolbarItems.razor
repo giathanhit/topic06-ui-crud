@@ -1,0 +1,22 @@
+﻿@using Volo.Abp.AspNetCore.Components.Web.LeptonXLiteTheme.Themes.LeptonXLite;
+@using Volo.Abp.DependencyInjection
+@using Blazorise
+
+@inherits ToolbarItemsComponent
+@attribute [ExposeServices(typeof(ToolbarItemsComponent))]
+@attribute [Dependency(ReplaceServices = true)]
+
+
+<Addons>
+    <Addon AddonType="AddonType.Start">
+        <AddonLabel>
+            <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Search" IconSize="IconSize.Default"/>
+        </AddonLabel>
+    </Addon>
+    <Addon AddonType="AddonType.Body">
+        <TextEdit Placeholder="Search" />
+    </Addon>
+</Addons>
+
+<LanguageSwitch />
+<UserMenu /> 

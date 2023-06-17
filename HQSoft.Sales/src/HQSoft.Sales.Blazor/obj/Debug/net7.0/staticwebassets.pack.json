@@ -1,0 +1,117 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\obj\\Debug\\net7.0\\build-gz\\zvHPr9Yf.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\obj\\Debug\\net7.0\\scopedcss\\bundle\\HQSoft.Sales.Blazor.styles.css",
+      "PackagePath": "staticwebassets\\HQSoft.Sales.Blazor.styles.css"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\appsettings.Development.json",
+      "PackagePath": "staticwebassets\\appsettings.Development.json"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\appsettings.json",
+      "PackagePath": "staticwebassets\\appsettings.json"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\css\\BlazoriseStyle.css",
+      "PackagePath": "staticwebassets\\css\\BlazoriseStyle.css"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\css\\blazor-bundle.css",
+      "PackagePath": "staticwebassets\\css\\blazor-bundle.css"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\css\\bootstrap-dim.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-dim.css"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\css\\layout-bundle.css",
+      "PackagePath": "staticwebassets\\css\\layout-bundle.css"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\global.css",
+      "PackagePath": "staticwebassets\\global.css"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\global.js",
+      "PackagePath": "staticwebassets\\global.js"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\images\\logo\\hqsoft\\logo-dark-main.png",
+      "PackagePath": "staticwebassets\\images\\logo\\hqsoft\\logo-dark-main.png"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\images\\logo\\hqsoft\\logo-dark.png",
+      "PackagePath": "staticwebassets\\images\\logo\\hqsoft\\logo-dark.png"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\images\\logo\\hqsoft\\logo-light-main.png",
+      "PackagePath": "staticwebassets\\images\\logo\\hqsoft\\logo-light-main.png"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\images\\logo\\hqsoft\\logo-light.png",
+      "PackagePath": "staticwebassets\\images\\logo\\hqsoft\\logo-light.png"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\images\\logo\\leptonx\\logo-dark-thumbnail.png",
+      "PackagePath": "staticwebassets\\images\\logo\\leptonx\\logo-dark-thumbnail.png"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\images\\logo\\leptonx\\logo-dark.png",
+      "PackagePath": "staticwebassets\\images\\logo\\leptonx\\logo-dark.png"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\images\\logo\\leptonx\\logo-light-thumbnail.png",
+      "PackagePath": "staticwebassets\\images\\logo\\leptonx\\logo-light-thumbnail.png"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\images\\logo\\leptonx\\logo-light.png",
+      "PackagePath": "staticwebassets\\images\\logo\\leptonx\\logo-light.png"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\images\\noun-code-bar-1673593.png",
+      "PackagePath": "staticwebassets\\images\\noun-code-bar-1673593.png"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\images\\noun-code-bar-1673593.svg",
+      "PackagePath": "staticwebassets\\images\\noun-code-bar-1673593.svg"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Blazor\\wwwroot\\main.css",
+      "PackagePath": "staticwebassets\\main.css"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.HQSoft.Sales.Blazor.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.HQSoft.Sales.Blazor.props",
+      "PackagePath": "build\\HQSoft.Sales.Blazor.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.HQSoft.Sales.Blazor.props",
+      "PackagePath": "buildMultiTargeting\\HQSoft.Sales.Blazor.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.HQSoft.Sales.Blazor.props",
+      "PackagePath": "buildTransitive\\HQSoft.Sales.Blazor.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,24 @@
+﻿@using HQSoft.Sales.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SalesResource> L
+
+<Card>
+    <CardBody>
+        <Row>
+            <Column style="width: 100%">
+                <Text TextWeight="TextWeight.Bold">@L["Filter by"]</Text>
+                <Field>
+                    <TextEdit Placeholder="@L["Assigned To"]" />
+                </Field>
+                <Field>
+                    <TextEdit Placeholder="@L["Created By"]" />
+                </Field>
+                <Text TextWeight="TextWeight.Bold">@L["Save Filter"]</Text>
+                <Field>
+                    <TextEdit Placeholder="@L["Filter name"]" />
+                </Field>
+                <Button Style="background:#828BB2; width: inherit; color:#FFFFFF" TextAlignment="TextAlignment.Center">@L["Save"]</Button>
+            </Column>
+        </Row>
+    </CardBody>
+</Card>

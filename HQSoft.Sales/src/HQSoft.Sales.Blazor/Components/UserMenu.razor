@@ -1,0 +1,44 @@
+﻿@using Volo.Abp.AspNetCore.Components.WebAssembly.LeptonXLiteTheme.Themes.LeptonXLite.Toolbar;
+@using Volo.Abp.DependencyInjection
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.Users
+@using Volo.Abp.MultiTenancy
+@using global::Localization.Resources.AbpUi
+
+@inherits UserMenuComponent
+@attribute [ExposeServices(typeof(UserMenuComponent))]
+@attribute [Dependency(ReplaceServices = true)]
+
+@inject ICurrentUser CurrentUser
+@inject ICurrentTenant CurrentTenant
+@inject IJSRuntime JsRuntime
+@inject NavigationManager Navigation
+@inject IStringLocalizer<AbpUiResource> UiLocalizer
+
+<AuthorizeView>
+    <Authorized>
+        <Dropdown RightAligned="true">
+            <DropdownToggle Color="Color.Default">
+
+                <Image Source="https://giaydantuong.edu.vn/wp-content/uploads/2023/04/hinh-anh-doi-meo-de-thuong-1.jpg" Style="padding:3px; width:50px; border-radius: 50%" />
+
+            </DropdownToggle>
+            <DropdownMenu>
+                @if (UserMenu != null)
+                {
+                    @foreach (var menuItem in UserMenu.Items)
+                    {
+                        <DropdownItem Clicked="@(() => NavigateToAsync(menuItem.Url, menuItem.Target))">@menuItem.DisplayName</DropdownItem>
+                    }
+                }
+                <DropdownDivider />
+                <DropdownItem Clicked="BeginSignOut">@UiLocalizer["Logout"]</DropdownItem>
+            </DropdownMenu>
+        </Dropdown>
+    </Authorized>
+    <NotAuthorized>
+        <a class="nav-link" href="authentication/login">
+            @UiLocalizer["Login"]
+        </a>
+    </NotAuthorized>
+</AuthorizeView>

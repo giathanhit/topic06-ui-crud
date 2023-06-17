@@ -1,0 +1,99 @@
+﻿@using Volo.Abp.AspNetCore.Components.Web.LeptonXLiteTheme.Themes.LeptonXLite.Toolbar;
+@using Volo.Abp.DependencyInjection
+@using Volo.Abp.Localization
+@using System.Globalization
+@using System.Collections.Immutable
+
+@inherits LanguageSwitchComponent
+@attribute [Dependency(ReplaceServices = true)]
+@attribute [ExposeServices(typeof(LanguageSwitchComponent))]
+
+@inject ILanguageProvider LanguageProvider
+@inject IJSRuntime JsRuntime
+
+@if (_otherLanguages != null && _otherLanguages.Any())
+{
+    <Dropdown RightAligned="true">
+        <DropdownToggle>
+            @if (_currentLanguage.DisplayName == "Vietnamese")
+            {
+                <Image Source="https://seeklogo.com/images/V/viet-nam-logo-3D78D597F9-seeklogo.com.png" Style="width:34px;height:24px" />
+            }
+            else
+            {
+                <Image Source="https://seeklogo.com/images/U/usa-flag-logo-F080109EF3-seeklogo.com.png" Style="width:34px;height:24px" />
+            }
+            @*@_currentLanguage.DisplayName*@
+        </DropdownToggle>
+        <DropdownMenu>
+            @foreach (var language in _otherLanguages)
+            {
+                @if (language.DisplayName == "Vietnamese")
+                {
+                    <DropdownItem Clicked="() => ChangeLanguageAsync(language)">
+                        <Image Source="https://seeklogo.com/images/V/viet-nam-logo-3D78D597F9-seeklogo.com.png" Style="width:14px;height:14px" />
+                        @language.DisplayName
+                    </DropdownItem>
+                }
+                else
+                {
+                    <DropdownItem Clicked="() => ChangeLanguageAsync(language)">
+                        <Image Source="https://seeklogo.com/images/U/usa-flag-logo-F080109EF3-seeklogo.com.png" Style="width:14px;height:14px" />
+                        @language.DisplayName
+                    </DropdownItem>
+                }
+            }
+        </DropdownMenu>
+    </Dropdown>
+}
+@code {
+    private IReadOnlyList<LanguageInfo> _otherLanguages;
+    private LanguageInfo _currentLanguage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var selectedLanguageName = await JsRuntime.InvokeAsync<string>(
+            "localStorage.getItem",
+            "Abp.SelectedLanguage"
+            );
+
+        _otherLanguages = await LanguageProvider.GetLanguagesAsync();
+
+        if (!_otherLanguages.Any())
+        {
+            return;
+        }
+
+        if (!selectedLanguageName.IsNullOrWhiteSpace())
+        {
+            _currentLanguage = _otherLanguages.FirstOrDefault(l => l.UiCultureName == selectedLanguageName);
+        }
+
+        if (_currentLanguage == null)
+        {
+            _currentLanguage = _otherLanguages.FirstOrDefault(l => l.UiCultureName == CultureInfo.CurrentUICulture.Name);
+        }
+
+        if (_currentLanguage == null)
+        {
+            _currentLanguage = _otherLanguages.FirstOrDefault();
+        }
+
+        _otherLanguages = _otherLanguages.Where(l => l != _currentLanguage).ToImmutableList();
+    }
+
+    private async Task ChangeLanguageAsync(LanguageInfo language)
+    {
+        await JsRuntime.InvokeVoidAsync(
+            "localStorage.setItem",
+            "Abp.SelectedLanguage", language.UiCultureName
+            );
+
+        await JsRuntime.InvokeVoidAsync(
+            "localStorage.setItem",
+            "Abp.IsRtl", CultureInfo.GetCultureInfo(language.UiCultureName).TextInfo.IsRightToLeft
+            );
+
+        await JsRuntime.InvokeVoidAsync("location.reload");
+    }
+}

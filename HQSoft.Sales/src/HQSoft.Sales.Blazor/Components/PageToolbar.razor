@@ -1,0 +1,8 @@
+﻿@*@using Volo.Abp.AspNetCore.Components.Web.LeptonXLiteTheme.Themes.LeptonXLite;
+@using Volo.Abp.DependencyInjection
+@using Blazorise
+
+@inherits PageHeader
+@attribute [ExposeServices(typeof(ToolbarItemsComponent))]
+@attribute [Dependency(ReplaceServices = true)]
+*@

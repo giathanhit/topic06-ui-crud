@@ -1,0 +1,96 @@
+﻿@page "/product/new" 
+@inherits SalesComponentBase
+
+@using HQSoft.Sales.Products;
+@using HQSoft.Sales.Localization;
+@using HQSoft.Sales.Permissions;
+@using Microsoft.Extensions.Localization;
+@using Volo.Abp.AspNetCore.Components.Web;
+
+@inject IStringLocalizer<SalesResource> L
+@inject AbpBlazorMessageLocalizerHelper<SalesResource> LH
+@inject IProductAppService AppService
+@inject NavigationManager NavigationManager
+
+<Row Spacing="2" xs="1">
+    <Span />
+    <Column>
+    </Column>
+    <Column>
+    </Column>
+    <Column>
+    </Column>
+    <Column Style="padding:10px 10px 10px 120px;">
+        <Button Style="border-style: double;border-color: #c7c7c7;">
+            <Icon Name="IconName.Print" />
+        </Button>
+        <Button Style="border-style: double;border-color: #c7c7c7;">
+            <Icon Name="IconName.ShoppingCart" />
+        </Button>
+        <Button Style="border-style: double;border-color: #c7c7c7;">
+            <Icon Name="IconName.List" Clicked="@((a)=>HideFilterBy())" />
+        </Button>
+        <Button Style="border-style: double;border-color: #c7c7c7;">
+            <Icon Name="IconName.LocationArrow" />
+        </Button>
+        <Button Style="color: #fff; background-color: #a46363;" Clicked="(()=>GoToProductPage())">
+            <Icon Name="IconName.Undo" /> @L["Back"]
+        </Button> 
+        <Button Color="Color.Primary" Clicked="CreateEntityAsync">
+            <Icon Name="IconName.Save" IconStyle="IconStyle.Regular" /> @L["Save"]
+        </Button>
+    </Column>
+</Row>
+<Row>
+    <Column style="@($"display:{(_hideItem ? "none" : "block")}; max-width:15%")">
+
+        <HQSoft.Sales.Blazor.Components.AssignedTo />
+    </Column>
+    <Column style="@($"width:{(_hideItem ? "100%" : "75%")};")">
+        <Card>
+            <CardBody>
+                @*Filter*@
+                <Validations @ref="@CreateValidationsRef" Model="@NewEntity" ValidateOnLoad="false">
+                    <Row>
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>Product ID</Text>
+                            <Field>
+                                <TextEdit Placeholder="" @bind-Text="@NewEntity.ProductID" />
+                            </Field>
+                        </Column>
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>Product Name</Text>
+                            <Field>
+                                <TextEdit Placeholder="" @bind-Text="@NewEntity.ProductName" />
+                            </Field>
+                        </Column>
+                    </Row>
+
+                    <Row>
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>Unit</Text>
+                            <Field>
+                                <TextEdit Placeholder="" @bind-Text="@NewEntity.Unit" />
+                            </Field>
+                        </Column>
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>SiteCode</Text>
+                            <Field>
+                                <TextEdit Placeholder="" @bind-Text="@NewEntity.SiteCode" />
+                            </Field>
+                        </Column>
+                        <Column ColumnSize="ColumnSize.Is4">
+                            <Text>Sales Price</Text>
+                            <Field>
+                                <NumericPicker TValue="double" @bind-Value="@NewEntity.SalesPrice" />
+                            </Field>
+                        </Column>
+                    </Row>
+                    <Row>
+                    </Row>
+                </Validations>
+                <HQSoft.Sales.Blazor.Components.Chat.Comment />
+            </CardBody>
+        </Card>
+    </Column>
+</Row>

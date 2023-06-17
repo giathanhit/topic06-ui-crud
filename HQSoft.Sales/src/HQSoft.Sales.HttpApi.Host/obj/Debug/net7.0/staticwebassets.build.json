@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "y73HGm48TNv3V+/bsbSIy3ho5wbH6uE7aOUjXzx9Km4=",
+  "Source": "HQSoft.Sales.HttpApi.Host",
+  "BasePath": "_content/HQSoft.Sales.HttpApi.Host",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

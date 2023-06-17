@@ -1,0 +1,90 @@
+﻿@page "/info"
+
+@using Blazorise.Components
+@using HQSoft.Sales.Orders
+@using HQSoft.Sales.Products
+@using HQSoft.Sales.OrderDetails
+@using Volo.Abp.Application.Dtos
+@using Volo.Abp.AspNetCore.Components.Web
+@using System.Net.Http.Json
+@using Volo.Abp.MultiTenancy
+@using HQSoft.Sales.Localization
+@using Microsoft.Extensions.Localization
+@inject IProductAppService ProductAppService
+@inject HttpClient httpClient
+@inject IOrderAppService AppService
+@inject NavigationManager NavigationManager
+@inject IStringLocalizer<SalesResource> L
+@inject AbpBlazorMessageLocalizerHelper<SalesResource> LH
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inherits AbpCrudPageBase<IProductAppService, ProductDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateProductDto>
+
+
+<DataGrid TItem="ProductDto"
+          Data="@products"
+          Editable
+          EditMode="DataGridEditMode.Inline"
+          Responsive
+          ShowPager>
+    <DataGridCommandColumn />
+    <DataGridColumn Field="@nameof( ProductDto.Quanity )" Caption="Quanity" Editable >
+        <EditTemplate>
+            <NumericEdit TValue="int"
+                         Value="@((int)context.Item.Quanity)"
+                         ValueChanged="@( v => {
+                            context.Item.Quanity = v;
+                            context.UpdateCell( nameof( ProductDto.SalesPrice ), v * context.Item.SalesPrice );
+                         })" />
+        </EditTemplate>
+    </DataGridColumn>
+    <DataGridColumn Field="@nameof( ProductDto.SalesPrice )" Caption="Price" Editable DisplayFormat="{0:C}">
+        <EditTemplate>
+            <NumericEdit TValue="double"
+                         Value="@((double)context.Item.SalesPrice)"
+                              Disabled />
+        </EditTemplate>
+    </DataGridColumn>
+    <DataGridColumn Field="@nameof( ProductDto.SalesPrice )" Caption="Total" Editable DisplayFormat="{0:C}">
+        <EditTemplate>
+            <NumericEdit TValue="double"
+                         Value="@((double)context.Item.SalesPrice)"
+                              Disabled />
+        </EditTemplate>
+    </DataGridColumn>
+</DataGrid>
+
+@code {
+    protected CreateUpdateOrdDetailsDto NewDetailEntity = new();
+    private IReadOnlyList<ProductDto> products { get; set; }
+
+    public string selectedID { get; set; }
+    public string selectedName { get; set; }
+    public int selectedQuantity { get; set; }
+    public double selectedSalesPrice { get; set; }
+
+
+    private int PageSize { get; } = LimitedResultRequestDto.DefaultMaxResultCount;
+    private int CurrentPage { get; set; }
+    private string CurrentSorting { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await SetPermissionsAsync();
+        await GetProductAsync();
+    }
+
+    private async Task GetProductAsync()
+    {
+        var result = await ProductAppService.GetListAsync(
+            new GetProductListDto
+                {
+                    MaxResultCount = PageSize,
+                    SkipCount = CurrentPage * PageSize,
+                    Sorting = CurrentSorting
+                }
+        );
+
+        products = result.Items;
+        TotalCount = (int)result.TotalCount;
+    }
+}

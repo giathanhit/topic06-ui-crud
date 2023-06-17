@@ -1,0 +1,264 @@
+﻿@page "/orders"
+@using HQSoft.Sales.Orders
+@using Volo.Abp.Application.Dtos
+@using Volo.Abp.AspNetCore.Components.Web
+@using System.Net.Http.Json
+@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
+@using Volo.Abp.AspNetCore.Components.Web.Theming.PageToolbars
+@using Volo.Abp.MultiTenancy
+@using HQSoft.Sales.Localization
+@using Microsoft.Extensions.Localization
+@inject IOrderAppService OrderAppService
+@inject HttpClient httpClient
+@inject NavigationManager NavigationManager
+@inject IStringLocalizer<SalesResource> L
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inherits AbpCrudPageBase<IOrderAppService, OrderDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateOrderDto>
+ 
+<Row>
+    <Column style="@($"display:{(_hideItem ? "none" : "block")}; max-width:15%")">
+        <HQSoft.Sales.Blazor.Components.FilterBy />
+    </Column>
+    <Column style="@($"width:{(_hideItem ? "100%" : "75%")};")">
+        <Card>
+            <CardBody>
+                <Row Style="padding-bottom:15px">
+                    <Column ColumnSize="ColumnSize.Is2">
+                        <Text TextWeight="TextWeight.Bold" Style="font-size: 20px">Sales Order</Text>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is2">
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is2">
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is2">
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is2">
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is4" style="@($"padding-left:{(_hideItem ? "21rem" : "17rem")};padding-top: 23px;")">
+                        <Button Outline Clicked="@((a)=>HideFilterBy())" Style="border-style: double;border-color: #e0e0e0;">
+                            <Icon Name="IconName.List" />
+                        </Button>
+                        <Button Outline Style="border-style: double;border-color: #e0e0e0;">
+                            <Icon Name="IconName.LocationArrow" />
+                        </Button> 
+                        <Button Color="Color.Secondary" Clicked="(()=>DeleteSelectedRows())">
+                            <Icon Name="IconName.Delete" /> @L["Delete"]
+                        </Button>
+                        <Button Color="Color.Primary" Clicked="((e)=>GoToCreatePage())">
+                            <Icon Name="IconName.Add" /> @L["New"]
+                        </Button>
+                        </Column>
+                        </Row>
+
+                        @*Filter*@
+                        <Row Style="padding-bottom:10px">
+                        <Column ColumnSize="ColumnSize.Is2">
+                        <Text>@L["Sales Territory"]</Text>
+                        <Select TValue="int">
+                            <SelectItem Value="1">Đà Nẵng Line</SelectItem>
+                            <SelectItem Value="2">Long Xuyên Line</SelectItem>
+                            <SelectItem Value="3">Hồ Chí Minh Line</SelectItem>
+                        </Select>
+                        </Column>
+                        <Column ColumnSize="ColumnSize.Is2">
+                        <Text>@L["From Date"]</Text>
+                        <Addons>
+                            <Addon AddonType="AddonType.Body">
+                                <DatePicker TValue="DateTime?" @ref="datePicker" />
+                            </Addon>
+                            <Addon AddonType="AddonType.End">
+                                <Button Color="Color.Light" Clicked="@(()=>datePicker.ToggleAsync())">
+                                    <Icon Name="IconName.CalendarDay" />
+                                </Button>
+                            </Addon>
+                        </Addons>
+                        </Column>
+                        <Column ColumnSize="ColumnSize.Is2">
+                        <Text>@L["Order Type"]</Text>
+                        <Select TValue="OrderType" @bind-Value="@EditingEntity.OrderType" Class="form-control">
+                            @foreach (var order in Enum.GetValues(typeof(OrderType)))
+                            {
+                                <SelectItem Value="@((OrderType)order)">
+                                    @L[$"Enum:OrderType.{order}"]
+                                </SelectItem>
+                            }
+                        </Select>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is2">
+                        <Text>@L["Order Number"]</Text>
+                        <Select TValue="int">
+                            <SelectItem Value="1">Select</SelectItem>
+                            <SelectItem Value="2">1</SelectItem>
+                            <SelectItem Value="3">2</SelectItem>
+                            <SelectItem Value="4">3</SelectItem>
+                        </Select>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is5">
+                        <Text>@L["Distributor"]</Text>
+                        <Select TValue="int">
+                            <SelectItem Value="1">Select</SelectItem>
+                            <SelectItem Value="2">1</SelectItem>
+                            <SelectItem Value="3">2</SelectItem>
+                            <SelectItem Value="4">3</SelectItem>
+                        </Select>
+                    </Column>
+                </Row>
+
+                <Row Style="padding-bottom:15px">
+                    <Column ColumnSize="ColumnSize.Is2">
+                        <Text>@L["State/Province"]</Text>
+                        <Select TValue="int">
+                            <SelectItem Value="1">Đà Nẵng City</SelectItem>
+                            <SelectItem Value="2">Long Xuyên City</SelectItem>
+                            <SelectItem Value="3">Hồ Chí Minh City</SelectItem>
+                        </Select>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is2">
+                        <Text>@L["To Date"]</Text>
+                        <Addons>
+                            <Addon AddonType="AddonType.Body">
+                                <DatePicker @ref="@datePicker" TValue="DateTime?" />
+                            </Addon>
+                            <Addon AddonType="AddonType.End">
+                                <Button Color="Color.Light" Clicked="@(()=>datePicker.ToggleAsync())">
+                                    <Icon Name="IconName.CalendarDay" />
+                                </Button>
+                            </Addon>
+                        </Addons>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is2">
+                        <Text>Handle</Text>
+                        <Select TValue="OrderHandle" @bind-Value="@EditingEntity.Handle" Class="form-control">
+                            @foreach (var order in Enum.GetValues(typeof(OrderHandle)))
+                            {
+                                <SelectItem Value="@((OrderHandle)order)">@order.ToString()</SelectItem>
+                            }
+                        </Select>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is2">
+                        <Text>@L["Invoice Number"]</Text>
+                        <Select TValue="int">
+                            <SelectItem Value="1">Select</SelectItem>
+                            <SelectItem Value="2">1</SelectItem>
+                            <SelectItem Value="3">2</SelectItem>
+                            <SelectItem Value="4">3</SelectItem>
+                        </Select>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is5">
+                        <Text>@L["Customer"]</Text>
+                        <Field>
+                            <TextEdit TextChanged="@_quickFilter" Placeholder="@L["Input name, Code, Customer Chanel or Shop Type"]" />
+                        </Field>
+                    </Column>
+                    <Column ColumnSize="ColumnSize.Is2" Style="padding-top: 23px;">
+                        <Button style="padding: 1px; width: 5rem;">
+                            <Badge Class="badge bg-Apply">@L["Apply"]</Badge>
+                        </Button>
+                        <Button style="padding: 1px; width: 5rem;">
+                            <Badge Class="badge bg-Clear">@L["Clear"]</Badge>
+                        </Button>
+                    </Column>
+                </Row>
+
+                @*Content*@
+
+                <DataGrid TItem="OrderDto"
+                          Data="@ordersList"
+                          CustomFilter="@OnCustomFilter"
+                          SortMode="DataGridSortMode.Single"
+                          SelectionMode="DataGridSelectionMode.Multiple"
+                          Striped
+                          Sortable
+                          ShowPager
+                          Responsive
+                          SelectedRows="@selectedRows">
+                    <DataGridColumns>
+                        <DataGridMultiSelectColumn TItem="OrderDto" Width="30px">
+                            <DisplayTemplate>
+                                <input type="checkbox" @bind="context.IsSelected" />
+                            </DisplayTemplate>
+                        </DataGridMultiSelectColumn>
+                        <DataGridCommandColumn />
+                         <DataGridColumn Field="@nameof(OrderDto.OrderNumber)" Caption="@L["Order Number"]" Context="order">
+                            <DisplayTemplate>
+                                <Link Underline="Underline.Always" Clicked="@(() => GoToEditPage(order))">@order.OrderNumber</Link>
+                            </DisplayTemplate>
+                        </DataGridColumn>
+                        <DataGridColumn Field="@nameof(OrderDto.TotalAmount)" Caption="@L["Total Amount"]" Editable>
+                            <DisplayTemplate>
+                                <Text Style="text-align:center">
+                                    @context.TotalAmount.ToString("#,###")
+                                </Text>
+                            </DisplayTemplate>
+                        </DataGridColumn>
+                        <DataGridColumn Field="@nameof(OrderDto.OrderStatus)" Caption="@L["Order Status"]" Editable>
+                            <DisplayTemplate>
+                                @if (context.OrderStatus == OrderStatus.Hold)
+                                {
+                                    <Badge Style="color: #F5BE4E; background-color: #FFF9EF">@context.OrderStatus</Badge>
+                                }
+                                else if (context.OrderStatus == OrderStatus.Processing)
+                                {
+                                    <Badge Style="color: #5FB0E7; background-color: #D8E9F5">@context.OrderStatus</Badge>
+                                }
+                                else if (context.OrderStatus == OrderStatus.DeliveryAllocation)
+                                {
+                                    <Badge Style="color: #918F83; background-color: #EDEDEF">@context.OrderStatus</Badge>
+                                }
+                                else if (context.OrderStatus == OrderStatus.Complete)
+                                {
+                                    <Badge Style="color: #3BC283; background-color: #DEFFF8">@context.OrderStatus</Badge>
+                                }
+                                else if (context.OrderStatus == OrderStatus.Ordered)
+                                {
+                                    <Badge Style="color: #8373dc; background-color: #E6E2F3">@context.OrderStatus</Badge>
+                                }
+                                else if (context.OrderStatus == OrderStatus.PrintedInvoice)
+                                {
+                                    <Badge Style="color: #9ec0d3; background-color: #ECF6F9">@context.OrderStatus</Badge>
+                                }
+                                else
+                                {
+                                    <Badge Style="color: #D7888E; background-color: #F9EDF0">@context.OrderStatus</Badge>
+                                }
+                            </DisplayTemplate>
+                        </DataGridColumn>
+                        <DataGridColumn Field="@nameof(OrderDto.DistributorCode)" Caption="@L["Site Code"]" />
+                        <DataGridColumn Field="@nameof(OrderDto.DistributorName)" Caption="@L["Distributor Name"]" />
+                        <DataGridColumn Field="@nameof(OrderDto.OrderType)" Caption="@L["Order Type"]">
+                            <DisplayTemplate>
+                                @L[$"Enum:OrderType.{context.OrderType}"]
+                            </DisplayTemplate>
+                        </DataGridColumn>
+                        <DataGridColumn Field="@nameof(OrderDto.OrderDate)" Caption="@L["Order Date"]">
+                            <DisplayTemplate>
+                                @context.OrderDate.ToString("dd/MM/yyyy")
+                            </DisplayTemplate>
+                        </DataGridColumn>
+                        <DataGridColumn Field="@nameof(OrderDto.PaymentMethod)" Caption="@L["Payment Method"]">
+                            <DisplayTemplate>
+                                @L[$"Enum:PaymentThod.{context.PaymentMethod}"]
+                            </DisplayTemplate>
+                        </DataGridColumn>
+                        <DataGridColumn Field="@nameof(OrderDto.CustomerID)" Caption="@L["Customer ID"]" />
+                        <DataGridColumn Field="@nameof(OrderDto.CustomerName)" Caption="@L["Customer Name"]" />
+                        <DataGridColumn Field="@nameof(OrderDto.CustomerAddress)" Caption="@L["Customer Address"]" />
+                    </DataGridColumns>
+                    <PageButtonTemplate>
+                        <Span TextColor="TextColor.Success">
+                            @context.PageNumber
+                        </Span>
+                    </PageButtonTemplate>
+                    <PageSizesTemplate>
+                        <Select TextColor="TextColor.Success" @bind-SelectedValue="@context.CurrentPageSize" Size="Size.Small">
+                            @foreach (var curPageSize in context.PageSizes)
+                            {
+                                <SelectItem Value="@curPageSize">@curPageSize</SelectItem>
+                            }
+                        </Select>
+                    </PageSizesTemplate>
+                </DataGrid>
+            </CardBody>
+        </Card>
+    </Column>
+</Row>

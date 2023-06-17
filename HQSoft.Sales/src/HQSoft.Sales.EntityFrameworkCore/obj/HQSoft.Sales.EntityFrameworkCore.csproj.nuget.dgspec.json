@@ -1,0 +1,309 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.EntityFrameworkCore\\HQSoft.Sales.EntityFrameworkCore.csproj": {}
+  },
+  "projects": {
+    "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Domain.Shared\\HQSoft.Sales.Domain.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Domain.Shared\\HQSoft.Sales.Domain.Shared.csproj",
+        "projectName": "HQSoft.Sales.Domain.Shared",
+        "projectPath": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Domain.Shared\\HQSoft.Sales.Domain.Shared.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Domain.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "Microsoft.Extensions.FileProviders.Embedded": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Volo.Abp.AuditLogging.Domain.Shared": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.BackgroundJobs.Domain.Shared": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.FeatureManagement.Domain.Shared": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.Identity.Domain.Shared": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.OpenIddict.Domain.Shared": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.PermissionManagement.Domain.Shared": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.SettingManagement.Domain.Shared": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.TenantManagement.Domain.Shared": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Domain\\HQSoft.Sales.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Domain\\HQSoft.Sales.Domain.csproj",
+        "projectName": "HQSoft.Sales.Domain",
+        "projectPath": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Domain\\HQSoft.Sales.Domain.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Domain.Shared\\HQSoft.Sales.Domain.Shared.csproj": {
+                "projectPath": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Domain.Shared\\HQSoft.Sales.Domain.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Volo.Abp.AuditLogging.Domain": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.BackgroundJobs.Domain": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.Emailing": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.FeatureManagement.Domain": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.Identity.Domain": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.OpenIddict.Domain": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.PermissionManagement.Domain.Identity": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.PermissionManagement.Domain.OpenIddict": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.SettingManagement.Domain": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.TenantManagement.Domain": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.EntityFrameworkCore\\HQSoft.Sales.EntityFrameworkCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.EntityFrameworkCore\\HQSoft.Sales.EntityFrameworkCore.csproj",
+        "projectName": "HQSoft.Sales.EntityFrameworkCore",
+        "projectPath": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.EntityFrameworkCore\\HQSoft.Sales.EntityFrameworkCore.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.EntityFrameworkCore\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Domain\\HQSoft.Sales.Domain.csproj": {
+                "projectPath": "D:\\HQSOFT\\LepXtonTheme\\HQSoft.Sales\\src\\HQSoft.Sales.Domain\\HQSoft.Sales.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Volo.Abp.AuditLogging.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.BackgroundJobs.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.EntityFrameworkCore.PostgreSql": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.FeatureManagement.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.OpenIddict.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.PermissionManagement.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.SettingManagement.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Volo.Abp.TenantManagement.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

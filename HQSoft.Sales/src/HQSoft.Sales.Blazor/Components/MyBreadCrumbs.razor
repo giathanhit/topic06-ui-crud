@@ -1,0 +1,13 @@
+﻿@using Volo.Abp.AspNetCore.Components.Web.LeptonXLiteTheme.Themes.LeptonXLite; 
+@using Volo.Abp.DependencyInjection
+
+@inherits Breadcrumbs
+@attribute [ExposeServices(typeof(Breadcrumbs))]
+@attribute [Dependency(ReplaceServices = true)]
+
+<Breadcrumb>
+    <BreadcrumbLink To="/" > Home </BreadcrumbLink> 
+    <BreadcrumbLink To="https://www.google.com/"> / Order </BreadcrumbLink> 
+</Breadcrumb>
+
+

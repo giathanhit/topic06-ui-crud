@@ -1,0 +1,93 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = HQSoft.Sales.Blazor
+build_property.RootNamespace = HQSoft.Sales.Blazor
+build_property.ProjectDir = D:\HQSOFT\LepXtonTheme\HQSoft.Sales\src\HQSoft.Sales.Blazor\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\HQSOFT\LepXtonTheme\HQSoft.Sales\src\HQSoft.Sales.Blazor
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Components/AssignedTo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBc3NpZ25lZFRvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Components/Button/ButtonToolbar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCdXR0b25cQnV0dG9uVG9vbGJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Components/Chat/Comment.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDaGF0XENvbW1lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Components/FilterBy.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGaWx0ZXJCeS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Components/LanguageSwitch.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYW5ndWFnZVN3aXRjaC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Components/MyBreadCrumbs.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xNeUJyZWFkQ3J1bWJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Components/MyToolbarItems.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xNeVRvb2xiYXJJdGVtcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Components/PageToolbar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlVG9vbGJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Components/UserMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVc2VyTWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Pages/Gift/GiftList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2lmdFxHaWZ0TGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Pages/Orders/OrderEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJzXE9yZGVyRWRpdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Pages/Orders/OrderList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJzXE9yZGVyTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Pages/Orders/OrderNew.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJzXE9yZGVyTmV3LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Pages/Products/ProductEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdEVkaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Pages/Products/ProductList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Pages/Products/ProductNew.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZHVjdE5ldy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Pages/Sales/SalesList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FsZXNcU2FsZXNMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HQSOFT/LepXtonTheme/HQSoft.Sales/src/HQSoft.Sales.Blazor/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-d694e3f22b
